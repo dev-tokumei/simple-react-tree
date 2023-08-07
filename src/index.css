@@ -25,7 +25,6 @@ code {
   align-items: center;
 }
 
-/* custom-tree.css */
 
 .node__root > circle {
   fill: red;
@@ -35,8 +34,4 @@ code {
   fill: yellow;
 }
 
-.node__leaf > circle {
-  fill: green;
-  /* Let's also make the radius of leaf nodes larger */
-  r: 40;
-}
+

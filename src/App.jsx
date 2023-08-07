@@ -7,41 +7,13 @@ const App = () => {
 
   const [tree, setTree] = useState([
     {
-      name: "АО",
+      name: " ",
       parent_id: 0,
       children: [
-        {
-          name: "город",
-          parent_id: 0,
-          children: [
-            {
-              name: "область",
-              parent_id: 1,
-              children: [
-                {
-                  name: "район",
-                  parent_id: 2,
-                  children: [],
-                  id: 5,
-                },
-                {
-                  name: "проспект",
-                  parent_id: 3,
-                  children: [],
-                  id: 6,
-                },
-              ],
-              id: 4,
-            },
-          ],
-          id: 3,
-        },
-        {
-          name: "РРП",
-          parent_id: 1,
-          children: [],
-          id: 7,
-        },
+        { name: "AO", parent_id: 1, children: [], id: 1 },
+        { name: "Город", parent_id: 2, children: [], id: 2 },
+        { name: "Область", parent_id: 3, children: [], id: 3 },
+        { name: "РРП", parent_id: 4, children: [], id: 4 },
       ],
       id: 1,
     },
@@ -89,6 +61,7 @@ const App = () => {
         branchNodeClassName="node__branch"
         leafNodeClassName="node__leaf"
       />
+
       <AddNewBrach
         isOpen={isOpen}
         handleClose={handleClose}
