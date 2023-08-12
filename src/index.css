@@ -25,7 +25,6 @@ code {
   align-items: center;
 }
 
-
 .node__root > circle {
   fill: red;
 }
@@ -33,5 +32,3 @@ code {
 .node__branch > circle {
   fill: yellow;
 }
-
-

@@ -1,33 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddNewBrach from "./components/addNewBrach";
 import Tree from "react-d3-tree";
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore";
 
 const App = () => {
-  const [parentName, setParentName] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [tree, setTree] = useState([
-    {
-      name: " ",
-      parent_id: 0,
-      children: [
-        { name: "AO", parent_id: 1, children: [], id: 1 },
-        { name: "Город", parent_id: 2, children: [], id: 2 },
-        { name: "Область", parent_id: 3, children: [], id: 3 },
-        { name: "РРП", parent_id: 4, children: [], id: 4 },
-      ],
-      id: 1,
-    },
-  ]);
+  const [error, setError] = useState(null);
+  const [tree, setTree] = useState([{}]);
+  const [parentName, setParentName] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleNodeClick = (datum) => {
-    setParentName(datum.data.name);
-    setIsOpen(true);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = getFirestore();
+        const treeCollection = collection(db, "tree");
+        setIsLoading(true);
+        const snapshot = await getDocs(treeCollection);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+        snapshot.forEach((doc) => {
+          const treeItem = doc.data();
+          setTree(treeItem.dataArray);
+        });
+
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching tree data:", error);
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleNewbranch = (tree, datumtId, newBranch) => {
     return tree.map((node) => {
@@ -46,21 +59,38 @@ const App = () => {
     });
   };
 
+  const handleNodeClick = (datum) => {
+    setParentName(datum.data.name);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="container">
-      <Tree
-        zoomable={true}
-        orientation="vertical"
-        onNodeClick={(datum) => handleNodeClick(datum)}
-        data={tree}
-        translate={{
-          x: 700,
-          y: 170,
-        }}
-        rootNodeClassName="node__root"
-        branchNodeClassName="node__branch"
-        leafNodeClassName="node__leaf"
-      />
+      {error ? (
+        <div>
+          Ошибка при получения данных {":("} {error}
+        </div>
+      ) : isLoading ? (
+        <div>Загрузка....</div>
+      ) : (
+        <Tree
+          zoomable={true}
+          orientation="vertical"
+          onNodeClick={(datum) => handleNodeClick(datum)}
+          data={tree}
+          translate={{
+            x: 700,
+            y: 170,
+          }}
+          rootNodeClassName="node__root"
+          branchNodeClassName="node__branch"
+          leafNodeClassName="node__leaf"
+        />
+      )}
 
       <AddNewBrach
         isOpen={isOpen}

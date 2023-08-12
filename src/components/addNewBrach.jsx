@@ -1,9 +1,10 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import clone from "clone";
+import { collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 
 function addChildByName(object, parentName, childName, setTree) {
-  function addChildRecursive(node) {
+  async function addChildRecursive(node) {
     if (node.name === parentName) {
       const newNodeChildrenData = node.children;
 
@@ -14,7 +15,18 @@ function addChildByName(object, parentName, childName, setTree) {
       };
       newNodeChildrenData.push(newTree);
 
-      setTree(clone(object));
+      const updatedTree = clone(object);
+
+      try {
+        const db = getFirestore();
+        const treeCollection = collection(db, "tree");
+
+        await setDoc(doc(treeCollection, "data"), { dataArray: updatedTree });
+
+        setTree(updatedTree);
+      } catch (error) {
+        console.error("Error adding new branch:", error);
+      }
 
       return true;
     }
@@ -40,7 +52,7 @@ function removeChildByName(object, parentName, setTree) {
     }
     node.children = [];
   }
-  function removeChildRecursive(node) {
+  async function removeChildRecursive(node) {
     if (node.name === parentName) {
       let newNodeChildrenData = node.children;
 
@@ -48,7 +60,18 @@ function removeChildByName(object, parentName, setTree) {
 
       newNodeChildrenData = [];
 
-      setTree(clone(object));
+      const updatedTree = clone(object);
+
+      try {
+        const db = getFirestore();
+        const treeCollection = collection(db, "tree");
+
+        await setDoc(doc(treeCollection, "data"), { dataArray: updatedTree });
+
+        setTree(updatedTree);
+      } catch (error) {
+        console.error("Error removing branch:", error);
+      }
 
       return true;
     }
@@ -77,7 +100,7 @@ const AddNewBrach = ({ isOpen, handleClose, parentName, tree, setTree }) => {
   };
 
   const handleDelete = () => {
-    alert("Точно вы хотите удалить элемент");
+    alert("Точно вы хотите удалить элемент?");
     removeChildByName(tree, parentName, setTree);
     handleClose();
   };

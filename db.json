@@ -1,0 +1,159 @@
+{
+  "tree": [
+    {
+      "name": " ",
+      "parent_id": 0,
+      "children": [
+        {
+          "name": "AO",
+          "parent_id": 1,
+          "children": [],
+          "id": 1
+        },
+        {
+          "name": "Город",
+          "parent_id": 2,
+          "children": [
+            {
+              "id": 359,
+              "name": "улица",
+              "parent_id": 194,
+              "children": []
+            }
+          ],
+          "id": 2
+        },
+        {
+          "name": "Область",
+          "parent_id": 3,
+          "children": [
+            {
+              "id": 270,
+              "name": "город областного подчинения",
+              "parent_id": 50,
+              "children": [
+                {
+                  "id": 370,
+                  "name": "проезд",
+                  "parent_id": 61,
+                  "children": [
+                    {
+                      "id": 388,
+                      "name": "проспект",
+                      "parent_id": 410,
+                      "children": []
+                    },
+                    {
+                      "id": 351,
+                      "name": "улица",
+                      "parent_id": 289,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 352,
+                  "name": "проспект",
+                  "parent_id": 280,
+                  "children": []
+                },
+                {
+                  "id": 353,
+                  "name": "улица",
+                  "parent_id": 281,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 250,
+              "name": "Район",
+              "parent_id": 170,
+              "children": [
+                {
+                  "id": 390,
+                  "name": "дехот",
+                  "parent_id": 60,
+                  "children": [
+                    {
+                      "id": 354,
+                      "name": "село",
+                      "parent_id": 282,
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 355,
+                  "name": "поселок",
+                  "parent_id": 283,
+                  "children": [
+                    {
+                      "id": 356,
+                      "name": "проезд",
+                      "parent_id": 283,
+                      "children": [
+                        {
+                          "id": 357,
+                          "name": "проспект",
+                          "parent_id": 284,
+                          "children": []
+                        },
+                        {
+                          "id": 358,
+                          "name": "улица",
+                          "parent_id": 285,
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "id": 350,
+                      "name": "проспект",
+                      "parent_id": 286,
+                      "children": []
+                    },
+                    {
+                      "id": 362,
+                      "name": "улица",
+                      "parent_id": 287,
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "id": 3
+        },
+        {
+          "name": "РРП",
+          "parent_id": 4,
+          "children": [
+            {
+              "name": "дехот",
+              "parent_id": 5,
+              "children": [
+                {
+                  "name": "Село",
+                  "parent_id": 6,
+                  "children": [],
+                  "id": 6
+                }
+              ],
+              "id": 5
+            },
+            {
+              "name": "поселок",
+              "parent_id": 7,
+              "children": [],
+              "id": 7
+            }
+          ],
+          "id": 4
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

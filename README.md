@@ -47,8 +47,6 @@ The project uses the following main dependencies:
   <dt><strong>&#8226; @emotion/styled: ^11.11.0</strong></dt>
 </dl>
 
-
 ## Contributing
 
 Contributions to Simple React Tree are welcome! If you find any issues or have improvements to suggest, please open an issue or create a pull request.
-
