@@ -4,8 +4,7 @@ import Tree from "react-d3-tree";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [tree, setTree] = useState([{}]);
   const [parentName, setParentName] = useState(null);
@@ -14,16 +13,14 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const db = getFirestore();
         const treeCollection = collection(db, "tree");
-        setIsLoading(true);
         const snapshot = await getDocs(treeCollection);
-
         snapshot.forEach((doc) => {
           const treeItem = doc.data();
           setTree(treeItem.dataArray);
         });
-
         setError(null);
       } catch (error) {
         console.error("Error fetching tree data:", error);
@@ -32,7 +29,6 @@ const App = () => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -69,7 +65,7 @@ const App = () => {
           Ошибка при получения данных {":("} {error}
         </div>
       ) : isLoading ? (
-        <div>Загрузка....</div>
+        <div className="spinner" />
       ) : (
         <Tree
           zoomable={true}
