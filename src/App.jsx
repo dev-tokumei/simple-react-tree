@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddNewBrach from "./components/addNewBrach";
 import Tree from "react-d3-tree";
-import {
-  collection,
-  doc,
-  getDocs,
-  getFirestore,
-  setDoc,
-} from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
