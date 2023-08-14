@@ -2,7 +2,7 @@
 
 Simple React Tree is a React application that demonstrates the use of a d3-based tree visualization component to represent hierarchical data. This project allows users to interact with the tree nodes and add new branches to the existing tree structure.
 
-## Getting StartedGetting Started
+## Getting Started
 
 To run the Simple React Tree application on your local machine, follow these steps:
 
