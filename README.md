@@ -45,6 +45,7 @@ The project uses the following main dependencies:
   <dt><strong>&#8226; @mui/material: ^5.14.3</strong></dt>
   <dt><strong>&#8226; @emotion/react: ^11.11.1</strong></dt>
   <dt><strong>&#8226; @emotion/styled: ^11.11.0</strong></dt>
+  <dt><strong>&#8226; "firebase": "^10.1.0"</strong></dt>
 </dl>
 
 ## Contributing
